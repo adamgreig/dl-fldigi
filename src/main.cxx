@@ -660,8 +660,8 @@ void generate_option_help(void) {
 	     << "  --wfall-only\n"
 	     << "    Hide all controls but the waterfall\n\n"
 
-	     << "  --hab\n"
-	     << "    High Altitude Balloon Setup (dl-fldigi)\n\n"
+	     << "  --not-hab\n"
+	     << "    Disable High Altitude Balloon GUI (dl-fldigi)\n\n"
 
 	     << "  --debug-level LEVEL\n"
 	     << "    Set the event log verbosity\n\n"
@@ -764,7 +764,7 @@ int parse_args(int argc, char **argv, int& idx)
 
                OPT_FONT, OPT_WFALL_HEIGHT,
                OPT_WINDOW_WIDTH, OPT_WINDOW_HEIGHT, OPT_WFALL_ONLY,
-               OPT_HAB,
+               OPT_NOT_HAB,
 #if USE_PORTAUDIO
                OPT_FRAMES_PER_BUFFER,
 #endif
@@ -814,7 +814,7 @@ int parse_args(int argc, char **argv, int& idx)
 		{ "window-width",  1, 0, OPT_WINDOW_WIDTH },
 		{ "window-height", 1, 0, OPT_WINDOW_HEIGHT },
 		{ "wfall-only",    0, 0, OPT_WFALL_ONLY },
-		{ "hab",		   0, 0, OPT_HAB },
+		{ "not-hab",		   0, 0, OPT_NOT_HAB },
 		{ "wo",            0, 0, OPT_WFALL_ONLY },
 
 #if USE_PORTAUDIO
@@ -1010,8 +1010,8 @@ int parse_args(int argc, char **argv, int& idx)
 			bWF_only = true;
 			break;
 
-		case OPT_HAB:
-			bHAB = true;
+		case OPT_NOT_HAB:
+			bHAB = false;
 			break;
 
 		case OPT_NOISE:
