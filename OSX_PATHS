@@ -1,4 +1,4 @@
 export SRC=$HOME/src
 export PREFIX=$HOME/sw
-export PATH=$PREFIX/bin:PATH
+export PATH=$PREFIX/bin:$PATH
 export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH
