@@ -102,7 +102,7 @@ static void mode_choice_callback(Fl_Widget *w, void *a);
 
 void init()
 {
-    /* called with lock acquired */
+    /* called with Fl lock acquired */
 
     flight_cache_file = HomeDir + "flight_docs.json";
     payload_cache_file = HomeDir + "payload_configuration_docs.json";
@@ -110,7 +110,7 @@ void init()
 
 void cleanup()
 {
-    /* called with lock acquired */
+    /* called with Fl lock acquired */
 
     flight_docs.clear();
     payload_docs.clear();
@@ -127,7 +127,7 @@ void load_cache()
     /* resets everything */
     select_flight(-1);
 
-    /* called with lock acquired */
+    /* called with Fl lock acquired */
 
     load_cache_file(flight_cache_file, flight_docs);
     load_cache_file(payload_cache_file, payload_docs);
@@ -823,11 +823,11 @@ static void autoconfigure_rtty_encoding(const Json::Value &value)
     int select = -1;
 
     /* rtty::BITS[] = {5, 7, 8}; */
-    if (encoding == "baudot")
+    if (encoding == "BAUDOT")
         select = 0;
-    else if (encoding == "ascii-7")
+    else if (encoding == "ASCII-7")
         select = 1;
-    else if (encoding == "ascii-8")
+    else if (encoding == "ASCII-8")
         select = 2;
     else
         return;
